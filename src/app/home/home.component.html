@@ -1,0 +1,100 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Manutenção de Clientes</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <a href="#" [routerLink]="['/AddCliente']" class="btn"> </a>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar">
+        <input type="text" id="filter" name="filter" placeholder="Filtrar" />
+
+      </nav>
+      <table
+        class="table table-striped table-hover table-bordered table-content"
+      >
+        <thead>
+          <tr class="center-align">
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>CPF</th>
+            <th>Data Nascimento</th>
+            <th>Renda Mensal</th>
+            <th>Email</th>
+            <th>Data Cadastro</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let cliente of clienteList; let i = index"
+            class="center-align"
+          >
+            <td>{{ cliente.FirstName }}</td>
+            <td>{{ cliente.LastName }}</td>
+            <td>{{ cliente.Cpf }}</td>
+            <td>{{ cliente.DataNascimento | date : "dd/MM/yyyy" }}</td>
+            <td>{{ cliente.RendaMensal }}</td>
+            <td>{{ cliente.Email }}</td>
+            <td>{{ cliente.DataCadastro | date : "dd/MM/yyyy" }}</td>
+            <td>
+              <a
+                href="#"
+                [routerLink]="['/ViewCliente/', cliente.id]"
+                class="btn"
+                ><i class="fas fa-eye view"></i
+              ></a>
+              <a
+                href="#"
+                [routerLink]="['/EditCliente/', cliente.id]"
+                class="btn"
+                ><i class="fa fa-edit edit"></i
+              ></a>
+              <button
+                type="button"
+                (click)="DeleteClienteConfirmation(cliente.id)"
+                class="btn"
+              >
+                <i class="fas fa-trash-alt delete"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td *ngIf="clienteList.length == 0" colspan="8">
+              Nenhum cliente encontrado
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+          [collectionSize]="collectionSize"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          (pageChange)="refreshClientes()"
+        >
+        </ngb-pagination>
+
+        <select
+          class="form-select"
+          style="width: auto"
+          [(ngModel)]="pageSize"
+          (ngModelChange)="refreshClientes()"
+        >
+          <option [ngValue]="2">2 itens por pag.</option>
+          <option [ngValue]="4">4 itens por pag.</option>
+          <option [ngValue]="6">6 itens por pag.</option>
+        </select>
+      </div>
+
+      <button class="btn btn-success" (click)="AddCliente()">
+        <i class="fas fa-plus-circle"></i><span> Novo</span>
+      </button>
+    </div>
+  </div>
+</div>

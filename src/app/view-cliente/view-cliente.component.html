@@ -1,0 +1,79 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Consulta Cliente</b></h4>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+      </div>
+      <table
+        class="table table-striped table-hover table-bordered table-conten"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <label><b>First Name</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.FirstName }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Last Name</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.LastName }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>CPF</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.Cpf }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Data Nascimento</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.DataNascimento }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Renda Mensal</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.RendaMensal }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Email</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.Email }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Data Cadastro</b></label>
+            </td>
+            <td>
+              <span>{{ ClienteDetail.DataCadastro| date : 'dd/MM/yyyy }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#" [routerLink]="['/Home']" class="btn btn-success back"
+        ><i class="fas fa-arrow-circle-lef"></i> Voltar</a
+      >
+    </div>
+  </div>
+</div>
